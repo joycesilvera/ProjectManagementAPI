@@ -21,5 +21,15 @@ namespace MvcProjectManagement.Controllers
             List<Project> projects = db.Projects.ToList();
             return projects; //at runtime it will convert to a JSON format
         }
+
+        [HttpPost]
+        [Route("api/projects")]
+        public Project Post(Project project)
+        {
+            ProjectManagementDbContext db = new ProjectManagementDbContext();
+            db.Projects.Add(project);
+            db.SaveChanges();
+            return project; //return updated as response
+        }
     }
 }
