@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace MvcProjectManagement.Models
@@ -7,6 +8,7 @@ namespace MvcProjectManagement.Models
     public class Project
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProjectID { get; set; }
         public string ProjectName { get; set; }
         public DateTime DateOfStart { get; set; }
