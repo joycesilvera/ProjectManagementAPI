@@ -18,12 +18,8 @@ namespace ProjectManagementAPI.Controllers
             _logger = logger;
         }
 
+        [Route("home/index")]
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
