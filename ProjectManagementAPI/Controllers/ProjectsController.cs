@@ -22,6 +22,24 @@ namespace MvcProjectManagement.Controllers
             return projects; //at runtime it will convert to a JSON format
         }
 
+        [HttpGet]
+        [Route("api/projects/search/{searchby}/{searchtext}")]
+        public List<Project> Search(string searchBy, string searchText)
+        {
+            ProjectManagementDbContext db = new ProjectManagementDbContext();
+            List<Project> projects = null;
+            if (searchBy == "ProjectID")
+                projects = db.Projects.Where(temp => temp.ProjectID.ToString().Contains(searchText)).ToList();
+            else if (searchBy == "ProjectName")
+                projects = db.Projects.Where(temp => temp.ProjectName.Contains(searchText)).ToList();
+            if (searchBy == "DateOfStart")
+                projects = db.Projects.Where(temp => temp.DateOfStart.ToString().Contains(searchText)).ToList();
+            if (searchBy == "TeamSize")
+                projects = db.Projects.Where(temp => temp.TeamSize.ToString().Contains(searchText)).ToList();
+
+            return projects;
+        }
+
         [HttpPost]
         [Route("api/projects")]
         public Project Post([FromBody] Project project)
