@@ -22,9 +22,7 @@ namespace ProjectManagementAPI.Migrations
             modelBuilder.Entity("MvcProjectManagement.Models.Project", b =>
                 {
                     b.Property<int>("ProjectID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfStart")
                         .HasColumnType("datetime2");

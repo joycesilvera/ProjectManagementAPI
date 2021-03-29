@@ -11,8 +11,7 @@ namespace ProjectManagementAPI.Migrations
                 name: "Projects",
                 columns: table => new
                 {
-                    ProjectID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectID = table.Column<int>(nullable: false),
                     ProjectName = table.Column<string>(nullable: true),
                     DateOfStart = table.Column<DateTime>(nullable: false),
                     TeamSize = table.Column<int>(nullable: false)

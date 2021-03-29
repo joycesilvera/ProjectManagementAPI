@@ -24,7 +24,7 @@ namespace MvcProjectManagement.Controllers
 
         [HttpPost]
         [Route("api/projects")]
-        public Project Post(Project project)
+        public Project Post([FromBody] Project project)
         {
             ProjectManagementDbContext db = new ProjectManagementDbContext();
             db.Projects.Add(project);

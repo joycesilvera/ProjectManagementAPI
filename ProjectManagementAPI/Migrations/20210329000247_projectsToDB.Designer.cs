@@ -10,7 +10,7 @@ using MvcProjectManagement.Models;
 namespace ProjectManagementAPI.Migrations
 {
     [DbContext(typeof(ProjectManagementDbContext))]
-    [Migration("20210328183322_projectsToDB")]
+    [Migration("20210329000247_projectsToDB")]
     partial class projectsToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,7 @@ namespace ProjectManagementAPI.Migrations
             modelBuilder.Entity("MvcProjectManagement.Models.Project", b =>
                 {
                     b.Property<int>("ProjectID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfStart")
                         .HasColumnType("datetime2");
