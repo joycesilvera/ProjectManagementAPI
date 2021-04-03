@@ -22,7 +22,9 @@ namespace MvcProjectManagement.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=localhost,1401;Database=SPMS;User=sa;Password=benzy5@Rarc");
+            //Uncomment for Azure-change pwd
+            //optionsBuilder.UseSqlServer("Server=tcp:spms-azure-sql-database.database.windows.net,1433;Database=SPMS;Persist Security Info=False;User=system_admin;Password=*******;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;");
+            optionsBuilder.UseSqlServer("Server=localhost,1401;Database=Practice;User=sa;Password=benzy5@Rarc");
         }
     }
 }

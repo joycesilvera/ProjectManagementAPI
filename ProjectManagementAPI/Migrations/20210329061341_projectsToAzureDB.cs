@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectManagementAPI.Migrations
 {
-    public partial class projectsToDB : Migration
+    public partial class projectsToAzureDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -10,8 +10,8 @@ using MvcProjectManagement.Models;
 namespace ProjectManagementAPI.Migrations
 {
     [DbContext(typeof(ProjectManagementDbContext))]
-    [Migration("20210329000247_projectsToDB")]
-    partial class projectsToDB
+    [Migration("20210329061341_projectsToAzureDB")]
+    partial class projectsToAzureDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
