@@ -4,20 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using MvcProjectManagement.Models;
+using ProjectManagementAPI.Identity;
+using ProjectManagementAPI.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MvcProjectManagement.Controllers
+namespace ProjectManagementAPI.Controllers
 {
     public class ProjectsController : Controller
     {
+        private ApplicationDbContext db;
+
+        public ProjectsController(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
 
         [HttpGet]
         [Route("api/projects")]
         public List<Project> Get()
         {
-            ProjectManagementDbContext db = new ProjectManagementDbContext();
             List<Project> projects = db.Projects.ToList();
             return projects; //at runtime it will convert to a JSON format
         }
@@ -26,7 +32,6 @@ namespace MvcProjectManagement.Controllers
         [Route("api/projects/search/{searchby}/{searchtext}")]
         public List<Project> Search(string searchBy, string searchText)
         {
-            ProjectManagementDbContext db = new ProjectManagementDbContext();
             List<Project> projects = null;
             if (searchBy == "ProjectID")
                 projects = db.Projects.Where(temp => temp.ProjectID.ToString().Contains(searchText)).ToList();
@@ -44,7 +49,6 @@ namespace MvcProjectManagement.Controllers
         [Route("api/projects")]
         public Project Post([FromBody] Project project)
         {
-            ProjectManagementDbContext db = new ProjectManagementDbContext();
             db.Projects.Add(project);
             db.SaveChanges();
             return project; //return updated as response
@@ -55,7 +59,6 @@ namespace MvcProjectManagement.Controllers
         [Route("api/projects")]
         public Project Put([FromBody] Project project)
         {
-            ProjectManagementDbContext db = new ProjectManagementDbContext();
             Project existingProject = db.Projects.Where(temp => temp.ProjectID == project.ProjectID).FirstOrDefault();
             if (existingProject != null)
             {
@@ -76,7 +79,6 @@ namespace MvcProjectManagement.Controllers
         [Route("api/projects")]
         public int Delete(int ProjectID)
         {
-            ProjectManagementDbContext db = new ProjectManagementDbContext();
             Project existingProject = db.Projects.Where(temp => temp.ProjectID == ProjectID).FirstOrDefault();
             if (existingProject != null)
             {
