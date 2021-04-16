@@ -21,5 +21,7 @@
     <Folder Include="Identity\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Migrations\" />
+    <Folder Include="ServiceContracts\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
